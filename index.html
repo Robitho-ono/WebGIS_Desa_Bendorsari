@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bendosari Eco-Spatial Portal | Livestock & Water Quality</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="ui.css" />
+</head>
+
+<body>
+    <header id="header">
+        <h1>Bendosari Eco-Spatial Portal</h1>
+    </header>
+
+    <div class="app-container">
+        <div id="sidebar">
+            <h3>NAVIGATION</h3>
+            <ul class="nav-menu">
+                <li><button onclick="zoomToDesa()">Zoom To Layers</button></li>
+                <li><button onclick="toggleAllLayers()">Show All Data</button></li>
+            </ul>
+
+            <div class="control-section">
+                <h4>BASEMAP</h4>
+                <div class="control-item">
+                    <label><input type="radio" name="basemap" value="osm" checked onclick="switchBasemap('osm')"> Open
+                        Street Map (OSM)</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="radio" name="basemap" value="satelit" onclick="switchBasemap('satelit')">
+                        Satellite Map (Esri)</label>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h4>INFRASTRUCTURE</h4>
+                <div class="control-item">
+                    <label><input type="checkbox" id="chk-jalan" onchange="toggleLayer('jalan', this.checked)">
+                        Road</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="checkbox" id="chk-sungai" onchange="toggleLayer('sungai', this.checked)">
+                        River</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="checkbox" id="chk-administrasi"
+                            onchange="toggleLayer('administrasi', this.checked)"> Boundary</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="checkbox" id="chk-rumah" onchange="toggleLayer('rumah', this.checked)">
+                        Residential / Houses</label>
+                </div>
+            </div>
+            <div class="control-section">
+                <h4>WATER QUALITY PARAMETERS</h4>
+                <div class="control-item">
+                    <label><input type="radio" name="parameter" value="none" checked onclick="switchLayer('none')"> None
+                        (Off)</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="radio" name="parameter" id="chk-tds" onclick="switchLayer('tds')"> Total
+                        Dissolved Solids</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="radio" name="parameter" id="chk-tss" onclick="switchLayer('tss')"> Total
+                        Suspended Solids</label>
+                </div>
+                <div class="control-item">
+                    <label><input type="radio" name="parameter" id="chk-cod" onclick="switchLayer('cod')"> Chemical
+                        Oxygen Demand</label>
+                </div>
+            </div>
+            <div id="legend"></div>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="webgis.js"></script>
+</body>
+
+</html>
